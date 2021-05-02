@@ -29,9 +29,9 @@ _phoneme_punctuations = '.!;:,?'
 _vowels = 'iyɨʉɯuɪʏʊeøɘəɵɤoɛœɜɞʌɔæɐaɶɑɒᵻ'
 _non_pulmonic_consonants = 'ʘɓǀɗǃʄǂɠǁʛ'
 _pulmonic_consonants = 'pbtdʈɖcɟkɡqɢʔɴŋɲɳnɱmʙrʀⱱɾɽɸβfvθðszʃʒʂʐçʝxɣχʁħʕhɦɬɮʋɹɻjɰlɭʎʟ'
-_suprasegmentals = 'ˈˌːˑ'
+_suprasegmentals = 'ˈˌːˑ↗↘↗↘'
 _other_symbols = 'ʍwɥʜʢʡɕʑɺɧ'
-_diacrilics = 'ɚ˞ɫ'
+_diacrilics = 'ɚ˞ɫ̞'
 _phonemes = _vowels + _non_pulmonic_consonants + _pulmonic_consonants + _suprasegmentals + _other_symbols + _diacrilics
 
 symbols, phonemes = make_symbols(_characters, _phonemes, _punctuations, _pad, _eos, _bos)

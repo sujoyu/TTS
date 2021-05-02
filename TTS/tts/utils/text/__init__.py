@@ -33,7 +33,7 @@ def text2phone(text, language):
     #try:
     punctuations = re.findall(PHONEME_PUNCTUATION_PATTERN, text)
     if version.parse(phonemizer.__version__) < version.parse('2.1'):
-        ph = phonemize(text, separator=seperator, strip=False, njobs=1, backend='espeak', language=language)
+        ph = phonemize(text, separator=seperator, strip=False, njobs=1, backend='espeak', language=language, with_stress=True)
         ph = ph[:-1].strip() # skip the last empty character
         # phonemizer does not tackle punctuations. Here we do.
         # Replace \n with matching punctuations.
@@ -47,7 +47,7 @@ def text2phone(text, language):
                 for punct in punctuations:
                     ph = ph.replace('| |\n', '|'+punct+'| |', 1)
     elif version.parse(phonemizer.__version__) >= version.parse('2.1'):
-        ph = phonemize(text, separator=seperator, strip=False, njobs=1, backend='espeak', language=language, preserve_punctuation=True, language_switch='remove-flags')
+        ph = phonemize(text, separator=seperator, strip=False, njobs=1, backend='espeak', language=language, preserve_punctuation=True, language_switch='remove-flags', with_stress=True)
         # this is a simple fix for phonemizer.
         # https://github.com/bootphon/phonemizer/issues/32
         if punctuations:
@@ -56,6 +56,13 @@ def text2phone(text, language):
             ph = ph[:-3]
     else:
         raise RuntimeError(" [!] Use 'phonemizer' version 2.1 or older.")
+
+    accents = ['↗', '↘', 'ˈ', 'ˌ', 'ˑ']
+    for accent in accents:
+        ph = ph.replace(f"{accent} |", f"{accent}").replace(f"{accent}|", f"{accent}")
+
+    # print(text)
+    # print(ph)
 
     return ph
 
