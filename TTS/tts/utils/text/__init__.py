@@ -57,7 +57,7 @@ def text2phone(text, language):
     else:
         raise RuntimeError(" [!] Use 'phonemizer' version 2.1 or older.")
 
-    accents = ['↗', '↘', 'ˈ', 'ˌ', 'ˑ']
+    accents = ['↗', '↘', 'ˈ', 'ˌ', 'ˑ', 'ʼ']
     for accent in accents:
         ph = ph.replace(f"{accent}", f"|{accent}|").replace(f"||", "|")
 
