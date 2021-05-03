@@ -59,7 +59,7 @@ def text2phone(text, language):
 
     accents = ['↗', '↘', 'ˈ', 'ˌ', 'ˑ']
     for accent in accents:
-        ph = ph.replace(f"{accent} |", f"{accent}").replace(f"{accent}|", f"{accent}")
+        ph = ph.replace(f"{accent}", f"|{accent}|").replace(f"||", "|")
 
     # print(text)
     # print(ph)
